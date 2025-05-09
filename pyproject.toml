@@ -1,0 +1,13 @@
+[project]
+name = "formal"
+version = "0.1.0"
+description = "Tentative testing of the formal library on Decision Trees"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "pandas>=2.2.3",
+    "scikit-learn>=1.6.1",
+    "ucimlrepo>=0.0.7",
+    "z3-solver>=4.14.1.0",
+]
