@@ -35,7 +35,7 @@ for _ in range(100):
     y_pred = model.predict(X_test)
     m_time.append(time() - start)
     m_acc.append(accuracy_score(y_test, y_pred))
-    m_prec.append(precision_score(y_test, y_pred))
+    m_prec.append(float(precision_score(y_test, y_pred)))
 
 # Print results
 print("Mean accuracy:", sum(m_acc) / 100)
