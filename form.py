@@ -49,7 +49,7 @@ class DecisionTreeVerifier:
                 pred = np.argmax(tree.value[node])
                 cond = z3.And(*path) if path else z3.BoolVal(True)
                 # assert that if cond then y_pred == (pred == 1)
-                self.constraints.append(z3.Implies(cond, self.y == (pred == 1)))
+                self.constraints.append(z3.Implies(cond, self.y == (bool(pred) == 1)))
 
         recurse(0, [])
 

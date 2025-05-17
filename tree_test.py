@@ -1,18 +1,22 @@
+from time import time_ns
+
 import pandas as pd
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
-from ucimlrepo import fetch_ucirepo
 
-# import UCI adult dataset
-adult = fetch_ucirepo(id=2)
+df: pd.DataFrame = pd.read_csv("adult.csv")
 
-# data (as pandas dataframes)
-X: pd.DataFrame = adult.data.features
-y: pd.DataFrame = adult.data.targets
+df = df.dropna()
+X = df.drop("income", axis=1)
+y = df["income"]
+y = y.map(lambda x: {"<=50K": 1, ">50K": 0}.get(x))
 
-#  Convert categorical to numerical
-X = pd.get_dummies(X[["workclass", "education", "marital-status", "occupation", "relationship", "race", "native-country"]])
+categorical = ["workclass", "education", "marital.status", "occupation", "relationship", "race", "sex", "native.country"]
+for col in categorical:
+    le = LabelEncoder()
+    X[col] = le.fit_transform(X[col])
 
 # Split into test and train data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, shuffle=True)
@@ -20,11 +24,21 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # Initiate a model
 model = DecisionTreeClassifier()
 
-# Train the model
-model.fit(X_train, y_train)
+m_acc: list[float] = []
+m_prec: list[float] = []
+m_time: list[int] = []
+start: int = time_ns()
 
-# Predict the target
-y_pred = model.predict(X_test)
+for _ in range(100):
+    # Train the model
+    model.fit(X_train, y_train)
+    # Predict the target
+    y_pred = model.predict(X_test)
+    m_time.append(time_ns() - start)
+    m_acc.append(accuracy_score(y_test, y_pred))
+    m_prec.append(precision_score(y_test, y_pred))
 
 # Print results
-print(accuracy_score(y_test, y_pred))
+print("Mean accuracy:", sum(m_acc) / 100)
+print("Mean Precision:", sum(m_prec) / 100)
+print("\nMean spent time in nanoseconds:", sum(m_time) / 100)
