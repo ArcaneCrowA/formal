@@ -1,4 +1,4 @@
-from time import time_ns
+from time import time
 
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score
@@ -26,19 +26,18 @@ model = DecisionTreeClassifier()
 
 m_acc: list[float] = []
 m_prec: list[float] = []
-m_time: list[int] = []
-start: int = time_ns()
+m_time: list[float] = []
+start: float = time()
 
+# Train the model and measure time and accuracy and precision
 for _ in range(100):
-    # Train the model
     model.fit(X_train, y_train)
-    # Predict the target
     y_pred = model.predict(X_test)
-    m_time.append(time_ns() - start)
+    m_time.append(time() - start)
     m_acc.append(accuracy_score(y_test, y_pred))
     m_prec.append(precision_score(y_test, y_pred))
 
 # Print results
 print("Mean accuracy:", sum(m_acc) / 100)
 print("Mean Precision:", sum(m_prec) / 100)
-print("\nMean spent time in nanoseconds:", sum(m_time) / 100)
+print("\nMean spent time in seconds:", sum(m_time) / 100)
