@@ -7,7 +7,7 @@ from sklearn.metrics import (
 )
 from sklearn.tree import DecisionTreeClassifier
 
-from dataset import load_and_preprocess_dataset
+from src.utils.dataset import load_and_preprocess_dataset
 from z3_model import fair_robust_predict, tree_constraints
 
 
