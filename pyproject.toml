@@ -1,7 +1,7 @@
 [project]
 name = "formal"
-version = "0.1.0"
-description = "Tentative testing of the formal library on Decision Trees"
+version = "0.7.0"
+description = "Z3 solver and RL integration"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -9,4 +9,5 @@ dependencies = [
     "scikit-learn>=1.6.1",
     "torch>=2.9.1",
     "z3-solver>=4.14.1.0",
+    "gymnasium>=0.29.1",
 ]
