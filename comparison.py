@@ -7,12 +7,17 @@ from sklearn.metrics import (
 )
 from sklearn.tree import DecisionTreeClassifier
 
-from dataset import load_and_preprocess_adult_dataset
+from dataset import load_and_preprocess_dataset
 from z3_model import fair_robust_predict, tree_constraints
+
+# CHOOSE DATASET HERE
+dataset_name = "adult"
+# dataset_name = "german"
+# dataset_name = "loan_data"
 
 # Load data
 X_train, X_test, y_train, y_test, features, deltas, sensitive = (
-    load_and_preprocess_adult_dataset()
+    load_and_preprocess_dataset(dataset_name)
 )
 
 # Train model
@@ -41,7 +46,8 @@ print("\nConstrained Model Performance:")
 print(f"Accuracy: {accuracy_score(y_test, constrained_preds):.4f}")
 print(f"Precision: {precision_score(y_test, constrained_preds):.4f}")
 print(
-    f"Time for constrained model predictions: {end_time_constrained - start_time_constrained:.4f} seconds"
+    "Time for constrained model predictions:"
+    f" {end_time_constrained - start_time_constrained:.4f} seconds"
 )
 
 start_time_original = time.time()
