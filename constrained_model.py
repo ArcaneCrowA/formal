@@ -77,6 +77,10 @@ for sample in samples:
     )
 end_time_constrained = time.time()
 
+print("\nClassification Report for Constrained Model:")
+print(classification_report(y_test, constrained_preds))
+
+
 print("\nConstrained Model Performance:")
 print(f"Accuracy: {accuracy_score(y_test, constrained_preds):.4f}")
 print(f"Precision: {precision_score(y_test, constrained_preds):.4f}")
@@ -84,8 +88,6 @@ print(
     f"Time for constrained model predictions: {end_time_constrained - start_time_constrained:.4f} seconds"
 )
 
-print("\nClassification Report for Constrained Model:")
-print(classification_report(y_test, constrained_preds))
 start_time_original = time.time()
 original_preds = clf.predict(X_test)
 end_time_original = time.time()
