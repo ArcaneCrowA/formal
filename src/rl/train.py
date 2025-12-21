@@ -24,7 +24,7 @@ def train():
     print("-" * 30)
 
     num_episodes = RL_TRAINING_PARAMETERS["num_episodes"]
-    for episode in range(num_episodes):
+    for episode in range(1, num_episodes + 1):
         state, _ = env.reset()
         state = torch.from_numpy(state).float().unsqueeze(0)
 
