@@ -135,9 +135,7 @@ def print_metrics(
 
 def main():
     # CHOOSE DATASET HERE
-    dataset_name = "adult"
-    # dataset_name = "german"
-    # dataset_name = "loan_data"
+    dataset_name = DATASET_NAME
 
     # Load data and train model
     (

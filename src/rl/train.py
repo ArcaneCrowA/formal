@@ -2,14 +2,14 @@ import torch
 import torch.optim as optim
 from torch.distributions import Categorical
 
-from config import RL_TRAINING_PARAMETERS
+from config import DATASET_NAME, RL_TRAINING_PARAMETERS
 from src.rl.policy_network import PolicyNetwork
 from src.rl.rl_environment import FairnessEnv
 
 
 def train():
     # You can switch the dataset here, e.g., "adult", "german", "loan_data"
-    dataset_name = "german"
+    dataset_name = DATASET_NAME
     env = FairnessEnv()
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
