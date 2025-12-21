@@ -3,6 +3,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
+from config import DELTAS, SENSITIVE_ATTRIBUTES
+
 
 def _preprocess_adult():
     df = pd.read_csv("datasets/adult.csv").replace("?", np.nan).dropna()
@@ -25,13 +27,8 @@ def _preprocess_adult():
 
     features = [col for col in df.columns if col != "income_label"]
 
-    sensitive = "sex"
-    deltas = {
-        "age": 1,
-        "capital.gain": 1000,
-        "capital.loss": 1000,
-        "hours.per.week": 1,
-    }
+    sensitive = SENSITIVE_ATTRIBUTES["adult"]
+    deltas = DELTAS["adult"]
     target = "income_label"
 
     return df, features, deltas, sensitive, target
@@ -41,8 +38,8 @@ def _preprocess_german():
     df = pd.read_csv("datasets/german.csv", sep=";").dropna()
 
     features = [col for col in df.columns if col != "Creditability"]
-    sensitive = "Sex_Marital_Status"
-    deltas = {"Age_years": 1, "Credit_Amount": 100}
+    sensitive = SENSITIVE_ATTRIBUTES["german"]
+    deltas = DELTAS["german"]
     target = "Creditability"
 
     return df, features, deltas, sensitive, target

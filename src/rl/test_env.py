@@ -1,3 +1,4 @@
+from config import DATASET_NAME, RL_TRAINING_PARAMETERS
 from src.rl.rl_environment import FairnessEnv
 
 
@@ -7,12 +8,16 @@ def test_environment():
     the Decision Tree model, and the Z3-based fairness/robustness checker.
     """
     # Choose a dataset to test
-    dataset_name = "german"
+    dataset_name = DATASET_NAME
     print(f"--- Testing FairnessEnv with dataset: {dataset_name} ---")
 
     # Initialize environment
     # We use a small sample size (20) to ensure the SMT solver runs quickly during this test
-    env = FairnessEnv(dataset_name=dataset_name, sample_size=20, lambd=0.1)
+    env = FairnessEnv(
+        dataset_name=dataset_name,
+        sample_size=RL_TRAINING_PARAMETERS["sample_size"],
+        lambd=RL_TRAINING_PARAMETERS["lambda"],
+    )
 
     # Reset environment to get initial state
     state, info = env.reset()

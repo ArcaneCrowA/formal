@@ -4,6 +4,7 @@ from gymnasium.spaces import Box, Discrete
 from sklearn.metrics import accuracy_score
 from sklearn.tree import DecisionTreeClassifier
 
+from config import DATASET_NAME, MODEL_PARAMETERS, RL_TRAINING_PARAMETERS
 from src.utils.dataset import load_and_preprocess_dataset
 from src.verification.z3_model import fair_robust_predict, tree_constraints
 
@@ -15,7 +16,12 @@ class FairnessEnv(gym.Env):
     violate fairness or robustness constraints as verified by an SMT solver.
     """
 
-    def __init__(self, dataset_name="adult", sample_size=50, lambd=0.1):
+    def __init__(
+        self,
+        dataset_name=DATASET_NAME,
+        sample_size=RL_TRAINING_PARAMETERS["sample_size"],
+        lambd=RL_TRAINING_PARAMETERS["lambda"],
+    ):
         super().__init__()
         # Load and preprocess the dataset
         (
@@ -35,7 +41,10 @@ class FairnessEnv(gym.Env):
         self.y_test_sub = self.y_test.iloc[: self.sample_size]
 
         # Train a base Decision Tree model
-        self.model = DecisionTreeClassifier(max_depth=3, random_state=42)
+        self.model = DecisionTreeClassifier(
+            max_depth=MODEL_PARAMETERS["max_depth"],
+            random_state=MODEL_PARAMETERS["random_state"],
+        )
         self.model.fit(self.X_train, self.y_train)
 
         # Pre-extract Z3 constraints from the decision tree
@@ -84,10 +93,6 @@ class FairnessEnv(gym.Env):
         return np.array([self.original_accuracy, initial_dpg], dtype=np.float32)
 
     def step(self, action):
-        """
-        Apply the chosen action (feature to test), invoke SMT solver,
-        and return the new state and reward.
-        """
         sensitive_feature_name = self.features[action]
 
         # 1. Invoke SMT Fairness/Robustness Evaluator (Z3 logic)
@@ -102,7 +107,11 @@ class FairnessEnv(gym.Env):
                 sensitive_feature_name,
                 self.deltas_info,
             )
-            constrained_preds.append(pred)
+            if has_violation:
+                # Flip the prediction if a violation is found
+                constrained_preds.append(1 - pred)
+            else:
+                constrained_preds.append(pred)
             violations.append(has_violation)
 
         constrained_preds = np.array(constrained_preds)
@@ -110,12 +119,14 @@ class FairnessEnv(gym.Env):
         # 2. Calculate Bias Score
         # Fraction of samples where a violation was found
         bias_score = np.mean(violations)
+        print(f"Bias Score: {bias_score:.4f}")
 
         # 3. Calculate Accuracy Change
         constrained_accuracy = accuracy_score(
             self.y_test_sub, constrained_preds
         )
         accuracy_change = constrained_accuracy - self.original_accuracy
+        print(f"Accuracy Change: {accuracy_change:.4f}")
 
         # 4. Calculate current Fairness Metric (DPG) for the state
         current_dpg = self._calculate_dpg(
@@ -124,6 +135,7 @@ class FairnessEnv(gym.Env):
 
         # 5. Calculate Reward: r = -bias_score(f_i) + lambda * accuracy_change
         reward = -float(bias_score) + self.lambd * float(accuracy_change)
+        print(f"Reward: {reward:.4f}")
 
         # 6. Update State
         self.state = np.array(

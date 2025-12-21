@@ -7,11 +7,12 @@ from sklearn.metrics import (
 )
 from sklearn.tree import DecisionTreeClassifier
 
+from config import DATASET_NAME, MODEL_PARAMETERS, VERIFICATION_PARAMETERS
 from src.utils.dataset import load_and_preprocess_dataset
 from src.verification.z3_model import fair_robust_predict, tree_constraints
 
 
-def load_data_and_train_model(dataset_name):
+def load_data_and_train_model(dataset_name=DATASET_NAME):
     """
     Load the dataset and train a Decision Tree model.
 
@@ -25,7 +26,10 @@ def load_data_and_train_model(dataset_name):
         load_and_preprocess_dataset(dataset_name)
     )
 
-    clf = DecisionTreeClassifier(max_depth=3, random_state=42)
+    clf = DecisionTreeClassifier(
+        max_depth=MODEL_PARAMETERS["max_depth"],
+        random_state=MODEL_PARAMETERS["random_state"],
+    )
     clf.fit(X_train, y_train)
 
     return X_train, X_test, y_train, y_test, features, deltas, sensitive, clf
@@ -39,7 +43,7 @@ def evaluate_model(
     sensitive,
     deltas,
     tree_cons=None,
-    use_z3=False,
+    use_z3=VERIFICATION_PARAMETERS["use_z3"],
 ):
     """
     Evaluate the model's performance and return predictions, metrics, and violations.
@@ -165,7 +169,7 @@ def main():
         sensitive,
         deltas,
         tree_cons,
-        use_z3=True,
+        use_z3=VERIFICATION_PARAMETERS["use_z3"],
     )
 
     # Evaluate original model (without Z3)
