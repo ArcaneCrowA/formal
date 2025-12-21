@@ -74,6 +74,7 @@ class FairnessEnv(gym.Env):
         Calculates the Demographic Parity Gap (DPG).
         DPG = |P(y_hat=1 | Z=0) - P(y_hat=1 | Z=1)|
         Uses binning for continuous features to ensure meaningful group rates.
+        Applies Laplace smoothing to avoid division by zero and stabilize estimates.
         """
         df_temp = self.X_test_sub.copy()
         df_temp["preds"] = preds
@@ -89,10 +90,15 @@ class FairnessEnv(gym.Env):
                 # Fallback if qcut fails due to lack of variation
                 pass
 
-        # Calculate positive rate for each group in the sensitive attribute
-        group_rates = df_temp.groupby(sensitive_attr, observed=True)[
+        # Calculate positive rate for each group in the sensitive attribute with Laplace smoothing
+        alpha = 1.0  # Laplace smoothing parameter
+        group_counts = df_temp.groupby(sensitive_attr, observed=True)[
             "preds"
-        ].mean()
+        ].count()
+        group_positives = df_temp.groupby(sensitive_attr, observed=True)[
+            "preds"
+        ].sum()
+        group_rates = (group_positives + alpha) / (group_counts + 2 * alpha)
 
         if len(group_rates) < 2:
             return 0.0
