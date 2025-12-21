@@ -119,14 +119,12 @@ class FairnessEnv(gym.Env):
         # 2. Calculate Bias Score
         # Fraction of samples where a violation was found
         bias_score = np.mean(violations)
-        print(f"Bias Score: {bias_score:.4f}")
 
         # 3. Calculate Accuracy Change
         constrained_accuracy = accuracy_score(
             self.y_test_sub, constrained_preds
         )
         accuracy_change = constrained_accuracy - self.original_accuracy
-        print(f"Accuracy Change: {accuracy_change:.4f}")
 
         # 4. Calculate current Fairness Metric (DPG) for the state
         current_dpg = self._calculate_dpg(
@@ -135,7 +133,6 @@ class FairnessEnv(gym.Env):
 
         # 5. Calculate Reward: r = -bias_score(f_i) + lambda * accuracy_change
         reward = -float(bias_score) + self.lambd * float(accuracy_change)
-        print(f"Reward: {reward:.4f}")
 
         # 6. Update State
         self.state = np.array(
@@ -147,7 +144,22 @@ class FairnessEnv(gym.Env):
         return self.state, reward, done, False, {}
 
     def reset(self, seed=None, options=None):
-        """Resets the environment to the initial baseline state."""
+        """Resets the environment to a random baseline state subset."""
         super().reset(seed=seed)
+
+        # Sample a random subset of the test data for each episode
+        indices = np.random.choice(
+            len(self.X_test), self.sample_size, replace=False
+        )
+        self.X_test_sub = self.X_test.iloc[indices]
+        self.y_test_sub = self.y_test.iloc[indices]
+        self.samples = self.X_test_sub.to_dict(orient="records")
+
+        # Update baseline performance metrics for this specific subset
+        self.original_preds = self.model.predict(self.X_test_sub)
+        self.original_accuracy = accuracy_score(
+            self.y_test_sub, self.original_preds
+        )
+
         self.state = self._get_initial_state()
         return self.state, {}

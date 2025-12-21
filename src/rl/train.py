@@ -32,9 +32,11 @@ def train():
         m = Categorical(action_probs)
         action = m.sample()
 
-        _, reward, _, _, _ = env.step(action.item())
+        next_state, reward, _, _, _ = env.step(action.item())
 
-        loss = -m.log_prob(action) * reward
+        # Add entropy for better exploration
+        entropy = m.entropy()
+        loss = -m.log_prob(action) * reward - 0.01 * entropy
 
         optimizer.zero_grad()
         loss.backward()
@@ -42,10 +44,12 @@ def train():
 
         if episode % 100 == 0:
             print(
-                f"Episode {episode}, "
-                f"Action: {env.features[action.item()]}, "
-                f"Reward: {reward:.4f}, "
-                f"Loss: {loss.item():.4f}"
+                f"Episode {episode:4d} | "
+                f"Feature: {env.features[action.item()]:20s} | "
+                f"Reward: {reward:8.4f} | "
+                f"Acc: {next_state[0]:.4f} | "
+                f"DPG: {next_state[1]:.4f} | "
+                f"Loss: {loss.item():8.4f}"
             )
 
 
