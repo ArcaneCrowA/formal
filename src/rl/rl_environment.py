@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.tree import DecisionTreeClassifier
 
 from src.utils.dataset import load_and_preprocess_dataset
-from z3_model import fair_robust_predict, tree_constraints
+from src.verification.z3_model import fair_robust_predict, tree_constraints
 
 
 class FairnessEnv(gym.Env):

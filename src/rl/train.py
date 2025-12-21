@@ -2,8 +2,8 @@ import torch
 import torch.optim as optim
 from torch.distributions import Categorical
 
-from policy_network import PolicyNetwork
-from rl_environment import FairnessEnv
+from src.rl.policy_network import PolicyNetwork
+from src.rl.rl_environment import FairnessEnv
 
 
 def train():

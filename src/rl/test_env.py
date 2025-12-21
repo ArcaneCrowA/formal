@@ -1,4 +1,4 @@
-from rl_environment import FairnessEnv
+from src.rl.rl_environment import FairnessEnv
 
 
 def test_environment():
