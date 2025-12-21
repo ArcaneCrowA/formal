@@ -83,8 +83,13 @@ def fair_robust_predict(sample, tree_cons, features, sensitive_attr, deltas):
     # Neighborhood constraints for X'
     for f in features:
         if f == sensitive_attr:
-            # Test for individual fairness (e.g., flipping sensitive bits 0 <-> 1)
-            v_solver.add(Or(Xp_vars[f] == 0.0, Xp_vars[f] == 1.0))
+            # Test for individual fairness using deltas for continuous attributes
+            if f in deltas:
+                v_solver.add(Xp_vars[f] >= float(sample[f]) - float(deltas[f]))
+                v_solver.add(Xp_vars[f] <= float(sample[f]) + float(deltas[f]))
+            else:
+                # For binary sensitive attributes, flip between 0 and 1
+                v_solver.add(Or(Xp_vars[f] == 0.0, Xp_vars[f] == 1.0))
         elif f in deltas:
             # Test for local robustness (perturbations within delta)
             v_solver.add(Xp_vars[f] >= float(sample[f]) - float(deltas[f]))

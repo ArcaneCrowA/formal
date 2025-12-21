@@ -26,9 +26,9 @@ DELTAS = {
         "Credit_Amount": 1000,
     },
     "loan_data": {
-        "age": 5,
-        "income": 1000,
-        "loan_amount": 1000,
+        "person_age": 5,
+        "person_income": 1000,
+        "loan_amnt": 1000,
     },
 }
 

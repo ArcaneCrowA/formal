@@ -1,5 +1,6 @@
 import gymnasium as gym
 import numpy as np
+import pandas as pd
 from gymnasium.spaces import Box, Discrete
 from sklearn.metrics import accuracy_score
 from sklearn.tree import DecisionTreeClassifier
@@ -72,12 +73,26 @@ class FairnessEnv(gym.Env):
         """
         Calculates the Demographic Parity Gap (DPG).
         DPG = |P(y_hat=1 | Z=0) - P(y_hat=1 | Z=1)|
+        Uses binning for continuous features to ensure meaningful group rates.
         """
         df_temp = self.X_test_sub.copy()
         df_temp["preds"] = preds
 
+        # Bin continuous features if they have many unique values to avoid sparse groups
+        if df_temp[sensitive_attr].nunique() > 10:
+            try:
+                # Use quantile-based binning into 4 groups (quartiles)
+                df_temp[sensitive_attr] = pd.qcut(
+                    df_temp[sensitive_attr], q=4, duplicates="drop"
+                )
+            except ValueError:
+                # Fallback if qcut fails due to lack of variation
+                pass
+
         # Calculate positive rate for each group in the sensitive attribute
-        group_rates = df_temp.groupby(sensitive_attr)["preds"].mean()
+        group_rates = df_temp.groupby(sensitive_attr, observed=True)[
+            "preds"
+        ].mean()
 
         if len(group_rates) < 2:
             return 0.0
@@ -131,8 +146,9 @@ class FairnessEnv(gym.Env):
             constrained_preds, sensitive_feature_name
         )
 
-        # 5. Calculate Reward: r = -bias_score(f_i) + lambda * accuracy_change
-        reward = -float(bias_score) + self.lambd * float(accuracy_change)
+        # 5. Calculate Reward: r = bias_score(f_i) + lambda * accuracy_change
+        # Rewarding the detection of bias to help the agent identify unfair features.
+        reward = float(bias_score) + self.lambd * float(accuracy_change)
 
         # 6. Update State
         self.state = np.array(

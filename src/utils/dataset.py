@@ -57,13 +57,8 @@ def _preprocess_loan_data():
     df.dropna(inplace=True)
 
     features = [col for col in df.columns if col != "loan_status"]
-    sensitive = "person_gender"
-    deltas = {
-        "person_age": 1,
-        "person_income": 1000,
-        "loan_amnt": 1000,
-        "person_emp_exp": 1,
-    }
+    sensitive = SENSITIVE_ATTRIBUTES["loan_data"]
+    deltas = DELTAS["loan_data"]
     target = "loan_status"
 
     return df, features, deltas, sensitive, target
