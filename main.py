@@ -52,6 +52,7 @@ def main():
         print_help()
     else:
         print(f"Unknown command: {command}")
+        print("Use 'uv run main.py help' to look for available commands")
         sys.exit(1)
 
 
