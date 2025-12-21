@@ -7,8 +7,9 @@ from src.rl.rl_environment import FairnessEnv
 
 
 def train():
-    # You can switch the dataset here, e.g., "adult", "german", "loan_data"
-    dataset_name = "german"
+    dataset_name = "adult"
+    # dataset_name = "german"
+    # dataset_name = "loan_data"
     env = FairnessEnv(dataset_name=dataset_name)
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
