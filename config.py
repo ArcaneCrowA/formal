@@ -2,7 +2,7 @@
 # This file contains all constants, parameters, and dataset selection.
 
 # Dataset selection
-DATASET_NAME = "german"  # Options: "adult", "german", "loan_data"
+DATASET_NAME = "adult"  # Options: "adult", "german", "loan_data"
 
 # RL Training Parameters
 RL_TRAINING_PARAMETERS = {
