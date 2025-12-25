@@ -1,0 +1,47 @@
+Starting training on 'german' dataset...
+Number of features (actions): 20
+------------------------------
+Episode  100 | Feature: Length_of_current_employment | Reward:   0.1150 | Acc: 0.7300 | DPG: 0.2879 | Loss:   0.2414
+Episode  200 | Feature: Credit_Amount        | Reward:   0.0600 | Acc: 0.6700 | DPG: 0.2593 | Loss:   0.0926
+Episode  300 | Feature: Duration_in_Current_address | Reward:   0.0700 | Acc: 0.6900 | DPG: 0.1073 | Loss:   0.1111
+Episode  400 | Feature: Occupation           | Reward:   0.0950 | Acc: 0.7500 | DPG: 0.0968 | Loss:   0.2170
+Episode  500 | Feature: Account_Balance      | Reward:   0.2650 | Acc: 0.5600 | DPG: 0.3354 | Loss:   0.2242
+Episode  600 | Feature: Most_valuable_available_asset | Reward:   0.1100 | Acc: 0.6900 | DPG: 0.4259 | Loss:   0.2976
+Episode  700 | Feature: Duration_of_Credit_monthly | Reward:   0.3200 | Acc: 0.7000 | DPG: 0.1152 | Loss:   0.2204
+Episode  800 | Feature: Occupation           | Reward:   0.0800 | Acc: 0.7300 | DPG: 0.2241 | Loss:   0.3599
+Episode  900 | Feature: Duration_of_Credit_monthly | Reward:   0.3450 | Acc: 0.6200 | DPG: 0.1130 | Loss:   0.0719
+Episode 1000 | Feature: Account_Balance      | Reward:   0.1800 | Acc: 0.5600 | DPG: 0.1198 | Loss:   0.4232
+Episode 1100 | Feature: Duration_of_Credit_monthly | Reward:   0.3000 | Acc: 0.6500 | DPG: 0.1263 | Loss:   0.0087
+Episode 1200 | Feature: Duration_of_Credit_monthly | Reward:   0.3500 | Acc: 0.7100 | DPG: 0.1213 | Loss:   0.0058
+Episode 1300 | Feature: Duration_of_Credit_monthly | Reward:   0.2500 | Acc: 0.6800 | DPG: 0.0427 | Loss:   0.0125
+Episode 1400 | Feature: Account_Balance      | Reward:   0.2100 | Acc: 0.6500 | DPG: 0.4200 | Loss:   0.5784
+Episode 1500 | Feature: Duration_of_Credit_monthly | Reward:   0.3250 | Acc: 0.6500 | DPG: 0.1091 | Loss:   0.0678
+Episode 1600 | Feature: Duration_of_Credit_monthly | Reward:   0.2350 | Acc: 0.6800 | DPG: 0.0379 | Loss:   0.0067
+Episode 1700 | Feature: Duration_of_Credit_monthly | Reward:   0.3750 | Acc: 0.6500 | DPG: 0.0705 | Loss:   0.0111
+Episode 1800 | Feature: Duration_of_Credit_monthly | Reward:   0.2750 | Acc: 0.6200 | DPG: 0.0564 | Loss:   0.0081
+Episode 1900 | Feature: Duration_of_Credit_monthly | Reward:   0.3300 | Acc: 0.6700 | DPG: 0.0929 | Loss:   0.0184
+Episode 2000 | Feature: Duration_of_Credit_monthly | Reward:   0.3800 | Acc: 0.6800 | DPG: 0.1797 | Loss:   0.0247
+
+All Non-Zero Features (Sorted by DPG):
+Feature                  | Avg DPG  | Acc + Fairness
+------------------------------------------------------------
+1. Purpose              | Avg DPG: 0.4750 | Utility Score: 0.6083
+2. Value_Savings_Stocks | Avg DPG: 0.3267 | Utility Score: 0.6754
+3. Sex_Marital_Status   | Avg DPG: 0.3215 | Utility Score: 0.6868
+4. Payment_Status_of_Previous_Credit | Avg DPG: 0.3007 | Utility Score: 0.6982
+5. Concurrent_Credits   | Avg DPG: 0.2991 | Utility Score: 0.6937
+6. Type_of_apartment    | Avg DPG: 0.2653 | Utility Score: 0.7115
+7. Account_Balance      | Avg DPG: 0.2498 | Utility Score: 0.6621
+8. No_of_Credits_at_this_Bank | Avg DPG: 0.2377 | Utility Score: 0.7327
+9. Most_valuable_available_asset | Avg DPG: 0.2328 | Utility Score: 0.7319
+10. Credit_Amount        | Avg DPG: 0.2209 | Utility Score: 0.7347
+11. Occupation           | Avg DPG: 0.2110 | Utility Score: 0.7389
+12. Age_years            | Avg DPG: 0.2098 | Utility Score: 0.7351
+13. Length_of_current_employment | Avg DPG: 0.2027 | Utility Score: 0.7540
+14. Instalment_per_cent  | Avg DPG: 0.1915 | Utility Score: 0.7487
+15. Duration_in_Current_address | Avg DPG: 0.1708 | Utility Score: 0.7551
+16. Guarantors           | Avg DPG: 0.1363 | Utility Score: 0.7773
+17. Foreign_Worker       | Avg DPG: 0.1337 | Utility Score: 0.7810
+18. Duration_of_Credit_monthly | Avg DPG: 0.0994 | Utility Score: 0.7831
+19. Telephone            | Avg DPG: 0.0771 | Utility Score: 0.8012
+20. No_of_dependents     | Avg DPG: 0.0690 | Utility Score: 0.8083

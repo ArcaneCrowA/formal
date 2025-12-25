@@ -1,0 +1,41 @@
+Starting training on 'adult' dataset...
+Number of features (actions): 14
+------------------------------
+Episode  100 | Feature: relationship         | Reward:   0.1650 | Acc: 0.7000 | DPG: 0.3947 | Loss:   0.1545
+Episode  200 | Feature: education            | Reward:   0.0000 | Acc: 0.8600 | DPG: 0.5429 | Loss:  -0.0335
+Episode  300 | Feature: relationship         | Reward:   0.2400 | Acc: 0.6700 | DPG: 0.2708 | Loss:   0.0191
+Episode  400 | Feature: relationship         | Reward:   0.1450 | Acc: 0.7100 | DPG: 0.2939 | Loss:   0.0016
+Episode  500 | Feature: relationship         | Reward:   0.1800 | Acc: 0.6600 | DPG: 0.3000 | Loss:   0.0026
+Episode  600 | Feature: relationship         | Reward:   0.2300 | Acc: 0.7100 | DPG: 0.2981 | Loss:   0.0086
+Episode  700 | Feature: relationship         | Reward:   0.2150 | Acc: 0.6300 | DPG: 0.5208 | Loss:   0.0079
+Episode  800 | Feature: age                  | Reward:   0.0000 | Acc: 0.8500 | DPG: 0.1162 | Loss:  -0.0130
+Episode  900 | Feature: relationship         | Reward:   0.2350 | Acc: 0.7600 | DPG: 0.5737 | Loss:   0.0068
+Episode 1000 | Feature: relationship         | Reward:   0.2300 | Acc: 0.6800 | DPG: 0.3840 | Loss:   0.0156
+Episode 1100 | Feature: relationship         | Reward:   0.1750 | Acc: 0.7400 | DPG: 0.3179 | Loss:   0.0021
+Episode 1200 | Feature: relationship         | Reward:   0.2850 | Acc: 0.6800 | DPG: 0.6232 | Loss:   0.0142
+Episode 1300 | Feature: relationship         | Reward:   0.2450 | Acc: 0.7000 | DPG: 0.3750 | Loss:   0.0059
+Episode 1400 | Feature: relationship         | Reward:   0.1650 | Acc: 0.7200 | DPG: 0.3841 | Loss:  -0.0002
+Episode 1500 | Feature: relationship         | Reward:   0.1700 | Acc: 0.7000 | DPG: 0.3749 | Loss:   0.0033
+Episode 1600 | Feature: relationship         | Reward:   0.1450 | Acc: 0.7600 | DPG: 0.3320 | Loss:  -0.0009
+Episode 1700 | Feature: fnlwgt               | Reward:   0.0050 | Acc: 0.8400 | DPG: 0.1852 | Loss:   0.0217
+Episode 1800 | Feature: relationship         | Reward:   0.2400 | Acc: 0.6600 | DPG: 0.2949 | Loss:   0.0042
+Episode 1900 | Feature: relationship         | Reward:   0.1950 | Acc: 0.7200 | DPG: 0.3767 | Loss:   0.0031
+Episode 2000 | Feature: relationship         | Reward:   0.1850 | Acc: 0.7300 | DPG: 0.5500 | Loss:   0.0070
+
+All Non-Zero Features (Sorted by DPG):
+Feature                  | Avg DPG  | Acc + Fairness
+------------------------------------------------------------
+1. capital.gain         | Avg DPG: 0.4931 | Utility Score: 0.6656
+2. education            | Avg DPG: 0.4548 | Utility Score: 0.6892
+3. native.country       | Avg DPG: 0.3879 | Utility Score: 0.7238
+4. workclass            | Avg DPG: 0.3713 | Utility Score: 0.7238
+5. relationship         | Avg DPG: 0.3686 | Utility Score: 0.6707
+6. capital.loss         | Avg DPG: 0.3425 | Utility Score: 0.7443
+7. marital.status       | Avg DPG: 0.3102 | Utility Score: 0.7537
+8. race                 | Avg DPG: 0.2889 | Utility Score: 0.7650
+9. age                  | Avg DPG: 0.2258 | Utility Score: 0.7935
+10. hours.per.week       | Avg DPG: 0.2089 | Utility Score: 0.8108
+11. sex                  | Avg DPG: 0.1957 | Utility Score: 0.8146
+12. occupation           | Avg DPG: 0.1780 | Utility Score: 0.8265
+13. education.num        | Avg DPG: 0.1488 | Utility Score: 0.8220
+14. fnlwgt               | Avg DPG: 0.1481 | Utility Score: 0.8309
