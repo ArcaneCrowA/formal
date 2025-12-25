@@ -2,14 +2,14 @@
 # This file contains all constants, parameters, and dataset selection.
 
 # Dataset selection
-DATASET_NAME = "adult"  # Options: "adult", "german", "loan_data"
+DATASET_NAME = "loan_data"  # Options: "adult", "german", "loan_data"
 
 # RL Training Parameters
 RL_TRAINING_PARAMETERS = {
-    "num_episodes": 2000,
+    "num_episodes": 10000,
     "learning_rate": 1e-3,
     "lambda": 0.5,  # Updates
-    "sample_size": 100,  # Number of samples to use for RL training
+    "sample_size": 300,  # Number of samples to use for RL training
 }
 
 # Deltas for Robustness Checks
@@ -37,7 +37,7 @@ DELTAS = {
 SENSITIVE_ATTRIBUTES = {
     "adult": "sex",
     "german": "Sex_Marital_Status",
-    "loan_data": "gender",
+    "loan_data": "person_gender",
 }
 
 # Model Training Parameters
