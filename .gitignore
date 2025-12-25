@@ -10,5 +10,3 @@ wheels/
 .venv
 # Mac specific
 .DS_STORE
-
-logs

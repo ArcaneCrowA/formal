@@ -1,0 +1,236 @@
+Starting training on 'adult' dataset...
+Number of features (actions): 14
+------------------------------
+Episode  100 | Feature: race                 | Reward:   0.0100 | Acc: 0.8200 | DPG: 0.5280 | Loss:  -0.0447
+Episode  200 | Feature: education.num        | Reward:   0.1417 | Acc: 0.7600 | DPG: 0.0833 | Loss:   0.0699
+Episode  300 | Feature: relationship         | Reward:   0.2150 | Acc: 0.6800 | DPG: 0.5229 | Loss:   0.0200
+Episode  400 | Feature: relationship         | Reward:   0.2317 | Acc: 0.6900 | DPG: 0.3093 | Loss:   0.0051
+Episode  500 | Feature: relationship         | Reward:   0.1783 | Acc: 0.7133 | DPG: 0.3508 | Loss:  -0.0003
+Episode  600 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7400 | DPG: 0.2883 | Loss:  -0.0003
+Episode  700 | Feature: relationship         | Reward:   0.1550 | Acc: 0.6767 | DPG: 0.4848 | Loss:  -0.0009
+Episode  800 | Feature: relationship         | Reward:   0.1633 | Acc: 0.7133 | DPG: 0.3374 | Loss:  -0.0003
+Episode  900 | Feature: relationship         | Reward:   0.1467 | Acc: 0.7467 | DPG: 0.2036 | Loss:  -0.0014
+Episode 1000 | Feature: relationship         | Reward:   0.2017 | Acc: 0.6900 | DPG: 0.3978 | Loss:   0.0007
+Episode 1100 | Feature: relationship         | Reward:   0.1967 | Acc: 0.7100 | DPG: 0.3462 | Loss:   0.0008
+Episode 1200 | Feature: relationship         | Reward:   0.1950 | Acc: 0.7000 | DPG: 0.3640 | Loss:   0.0011
+Episode 1300 | Feature: education.num        | Reward:   0.1383 | Acc: 0.7867 | DPG: 0.1950 | Loss:   0.4529
+Episode 1400 | Feature: relationship         | Reward:   0.1683 | Acc: 0.7000 | DPG: 0.2343 | Loss:   0.0138
+Episode 1500 | Feature: relationship         | Reward:   0.2183 | Acc: 0.7133 | DPG: 0.3496 | Loss:   0.0090
+Episode 1600 | Feature: education.num        | Reward:   0.1200 | Acc: 0.8200 | DPG: 0.1087 | Loss:   0.2845
+Episode 1700 | Feature: relationship         | Reward:   0.1567 | Acc: 0.7500 | DPG: 0.4923 | Loss:   0.0009
+Episode 1800 | Feature: relationship         | Reward:   0.1833 | Acc: 0.7167 | DPG: 0.2807 | Loss:   0.0033
+Episode 1900 | Feature: relationship         | Reward:   0.1850 | Acc: 0.6933 | DPG: 0.2561 | Loss:   0.0055
+Episode 2000 | Feature: relationship         | Reward:   0.1917 | Acc: 0.6900 | DPG: 0.2857 | Loss:   0.0020
+Episode 2100 | Feature: relationship         | Reward:   0.1800 | Acc: 0.7200 | DPG: 0.4059 | Loss:   0.0025
+Episode 2200 | Feature: relationship         | Reward:   0.1817 | Acc: 0.7167 | DPG: 0.2567 | Loss:   0.0022
+Episode 2300 | Feature: relationship         | Reward:   0.1667 | Acc: 0.7467 | DPG: 0.1939 | Loss:  -0.0004
+Episode 2400 | Feature: relationship         | Reward:   0.1683 | Acc: 0.6833 | DPG: 0.3217 | Loss:  -0.0007
+Episode 2500 | Feature: relationship         | Reward:   0.2517 | Acc: 0.6800 | DPG: 0.2924 | Loss:   0.0039
+Episode 2600 | Feature: education.num        | Reward:   0.0883 | Acc: 0.7667 | DPG: 0.0583 | Loss:   0.2179
+Episode 2700 | Feature: relationship         | Reward:   0.2233 | Acc: 0.6867 | DPG: 0.2545 | Loss:   0.0056
+Episode 2800 | Feature: relationship         | Reward:   0.2000 | Acc: 0.7533 | DPG: 0.3198 | Loss:   0.0011
+Episode 2900 | Feature: relationship         | Reward:   0.1983 | Acc: 0.7000 | DPG: 0.4333 | Loss:   0.0024
+Episode 3000 | Feature: relationship         | Reward:   0.1650 | Acc: 0.7167 | DPG: 0.3262 | Loss:   0.0018
+Episode 3100 | Feature: relationship         | Reward:   0.1883 | Acc: 0.7467 | DPG: 0.3542 | Loss:   0.0016
+Episode 3200 | Feature: relationship         | Reward:   0.1667 | Acc: 0.6933 | DPG: 0.3606 | Loss:   0.0020
+Episode 3300 | Feature: relationship         | Reward:   0.2083 | Acc: 0.6800 | DPG: 0.1962 | Loss:   0.0016
+Episode 3400 | Feature: relationship         | Reward:   0.2100 | Acc: 0.6667 | DPG: 0.2830 | Loss:   0.0022
+Episode 3500 | Feature: relationship         | Reward:   0.1850 | Acc: 0.6567 | DPG: 0.2569 | Loss:   0.0010
+Episode 3600 | Feature: relationship         | Reward:   0.1750 | Acc: 0.6800 | DPG: 0.3440 | Loss:   0.0021
+Episode 3700 | Feature: race                 | Reward:   0.0067 | Acc: 0.8400 | DPG: 0.5333 | Loss:   0.0271
+Episode 3800 | Feature: relationship         | Reward:   0.1917 | Acc: 0.7100 | DPG: 0.2637 | Loss:   0.0101
+Episode 3900 | Feature: relationship         | Reward:   0.1900 | Acc: 0.6700 | DPG: 0.2490 | Loss:   0.0032
+Episode 4000 | Feature: relationship         | Reward:   0.1500 | Acc: 0.7133 | DPG: 0.1837 | Loss:  -0.0003
+Episode 4100 | Feature: relationship         | Reward:   0.2117 | Acc: 0.6733 | DPG: 0.4493 | Loss:   0.0034
+Episode 4200 | Feature: relationship         | Reward:   0.1433 | Acc: 0.7567 | DPG: 0.2895 | Loss:  -0.0013
+Episode 4300 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7367 | DPG: 0.3366 | Loss:  -0.0004
+Episode 4400 | Feature: relationship         | Reward:   0.1817 | Acc: 0.7233 | DPG: 0.2304 | Loss:  -0.0002
+Episode 4500 | Feature: relationship         | Reward:   0.2133 | Acc: 0.7067 | DPG: 0.4401 | Loss:   0.0080
+Episode 4600 | Feature: relationship         | Reward:   0.1617 | Acc: 0.7100 | DPG: 0.2619 | Loss:  -0.0001
+Episode 4700 | Feature: relationship         | Reward:   0.1967 | Acc: 0.7033 | DPG: 0.4565 | Loss:   0.0003
+Episode 4800 | Feature: relationship         | Reward:   0.2050 | Acc: 0.7233 | DPG: 0.2435 | Loss:   0.0001
+Episode 4900 | Feature: relationship         | Reward:   0.1850 | Acc: 0.7567 | DPG: 0.2061 | Loss:  -0.0005
+Episode 5000 | Feature: relationship         | Reward:   0.1833 | Acc: 0.7033 | DPG: 0.3238 | Loss:  -0.0006
+Episode 5100 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7167 | DPG: 0.4379 | Loss:  -0.0001
+Episode 5200 | Feature: relationship         | Reward:   0.2100 | Acc: 0.7100 | DPG: 0.3767 | Loss:   0.0021
+Episode 5300 | Feature: relationship         | Reward:   0.1800 | Acc: 0.7067 | DPG: 0.3377 | Loss:   0.0079
+Episode 5400 | Feature: relationship         | Reward:   0.1833 | Acc: 0.7600 | DPG: 0.5470 | Loss:   0.0101
+Episode 5500 | Feature: native.country       | Reward:   0.0117 | Acc: 0.8033 | DPG: 0.0000 | Loss:   0.0391
+Episode 5600 | Feature: relationship         | Reward:   0.1833 | Acc: 0.6900 | DPG: 0.3459 | Loss:   0.0054
+Episode 5700 | Feature: relationship         | Reward:   0.1600 | Acc: 0.7067 | DPG: 0.3011 | Loss:   0.0008
+Episode 5800 | Feature: relationship         | Reward:   0.1767 | Acc: 0.6800 | DPG: 0.2646 | Loss:   0.0080
+Episode 5900 | Feature: relationship         | Reward:   0.1583 | Acc: 0.7700 | DPG: 0.2149 | Loss:   0.0002
+Episode 6000 | Feature: relationship         | Reward:   0.1983 | Acc: 0.7033 | DPG: 0.3968 | Loss:   0.0023
+Episode 6100 | Feature: relationship         | Reward:   0.1800 | Acc: 0.6967 | DPG: 0.5246 | Loss:   0.0014
+Episode 6200 | Feature: relationship         | Reward:   0.2233 | Acc: 0.6667 | DPG: 0.3851 | Loss:   0.0079
+Episode 6300 | Feature: relationship         | Reward:   0.1933 | Acc: 0.7200 | DPG: 0.2626 | Loss:   0.0012
+Episode 6400 | Feature: relationship         | Reward:   0.1967 | Acc: 0.6933 | DPG: 0.3375 | Loss:   0.0024
+Episode 6500 | Feature: capital.gain         | Reward:   0.0050 | Acc: 0.8333 | DPG: 0.0000 | Loss:   0.0178
+Episode 6600 | Feature: relationship         | Reward:   0.1800 | Acc: 0.7000 | DPG: 0.2654 | Loss:   0.0016
+Episode 6700 | Feature: education.num        | Reward:   0.0833 | Acc: 0.7800 | DPG: 0.1183 | Loss:   0.2120
+Episode 6800 | Feature: relationship         | Reward:   0.1550 | Acc: 0.7233 | DPG: 0.3273 | Loss:   0.0031
+Episode 6900 | Feature: relationship         | Reward:   0.1917 | Acc: 0.7400 | DPG: 0.4895 | Loss:   0.0026
+Episode 7000 | Feature: relationship         | Reward:   0.1700 | Acc: 0.7000 | DPG: 0.2487 | Loss:   0.0046
+Episode 7100 | Feature: relationship         | Reward:   0.2083 | Acc: 0.6933 | DPG: 0.4114 | Loss:   0.0069
+Episode 7200 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7267 | DPG: 0.1904 | Loss:   0.0018
+Episode 7300 | Feature: relationship         | Reward:   0.1733 | Acc: 0.7367 | DPG: 0.2874 | Loss:   0.0011
+Episode 7400 | Feature: relationship         | Reward:   0.2267 | Acc: 0.6800 | DPG: 0.2657 | Loss:   0.0031
+Episode 7500 | Feature: relationship         | Reward:   0.1683 | Acc: 0.7067 | DPG: 0.2764 | Loss:   0.0006
+Episode 7600 | Feature: relationship         | Reward:   0.1883 | Acc: 0.7000 | DPG: 0.2333 | Loss:   0.0005
+Episode 7700 | Feature: relationship         | Reward:   0.1767 | Acc: 0.7100 | DPG: 0.3043 | Loss:   0.0003
+Episode 7800 | Feature: education.num        | Reward:   0.0983 | Acc: 0.7800 | DPG: 0.0765 | Loss:   0.1508
+Episode 7900 | Feature: relationship         | Reward:   0.1633 | Acc: 0.7233 | DPG: 0.3743 | Loss:   0.0016
+Episode 8000 | Feature: relationship         | Reward:   0.1750 | Acc: 0.7067 | DPG: 0.3248 | Loss:   0.0009
+Episode 8100 | Feature: relationship         | Reward:   0.1817 | Acc: 0.7300 | DPG: 0.3535 | Loss:   0.0009
+Episode 8200 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7100 | DPG: 0.2722 | Loss:   0.0002
+Episode 8300 | Feature: relationship         | Reward:   0.1867 | Acc: 0.7067 | DPG: 0.3281 | Loss:   0.0013
+Episode 8400 | Feature: relationship         | Reward:   0.1650 | Acc: 0.6700 | DPG: 0.2421 | Loss:   0.0001
+Episode 8500 | Feature: relationship         | Reward:   0.1967 | Acc: 0.7167 | DPG: 0.3388 | Loss:   0.0021
+Episode 8600 | Feature: relationship         | Reward:   0.1800 | Acc: 0.6967 | DPG: 0.2614 | Loss:   0.0022
+Episode 8700 | Feature: relationship         | Reward:   0.2067 | Acc: 0.7167 | DPG: 0.3000 | Loss:   0.0056
+Episode 8800 | Feature: relationship         | Reward:   0.1600 | Acc: 0.7233 | DPG: 0.2991 | Loss:   0.0012
+Episode 8900 | Feature: relationship         | Reward:   0.1917 | Acc: 0.7200 | DPG: 0.2807 | Loss:   0.0047
+Episode 9000 | Feature: relationship         | Reward:   0.2117 | Acc: 0.7433 | DPG: 0.2494 | Loss:   0.0033
+Episode 9100 | Feature: relationship         | Reward:   0.1450 | Acc: 0.7033 | DPG: 0.3529 | Loss:   0.0012
+Episode 9200 | Feature: relationship         | Reward:   0.1850 | Acc: 0.7267 | DPG: 0.3643 | Loss:   0.0263
+Episode 9300 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7067 | DPG: 0.2786 | Loss:   0.0083
+Episode 9400 | Feature: relationship         | Reward:   0.1483 | Acc: 0.7133 | DPG: 0.2174 | Loss:   0.0011
+Episode 9500 | Feature: relationship         | Reward:   0.2017 | Acc: 0.7267 | DPG: 0.3310 | Loss:   0.0083
+Episode 9600 | Feature: relationship         | Reward:   0.1983 | Acc: 0.6900 | DPG: 0.2980 | Loss:   0.0093
+Episode 9700 | Feature: relationship         | Reward:   0.2000 | Acc: 0.7267 | DPG: 0.4225 | Loss:   0.0245
+Episode 9800 | Feature: relationship         | Reward:   0.2000 | Acc: 0.6900 | DPG: 0.4963 | Loss:   0.0049
+Episode 9900 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7233 | DPG: 0.4569 | Loss:   0.0021
+Episode 10000 | Feature: relationship         | Reward:   0.1767 | Acc: 0.7167 | DPG: 0.3095 | Loss:   0.0035
+Episode 10100 | Feature: relationship         | Reward:   0.1983 | Acc: 0.7300 | DPG: 0.3496 | Loss:   0.0119
+Episode 10200 | Feature: education.num        | Reward:   0.1133 | Acc: 0.7667 | DPG: 0.0756 | Loss:   0.3130
+Episode 10300 | Feature: relationship         | Reward:   0.1783 | Acc: 0.7067 | DPG: 0.2859 | Loss:   0.0020
+Episode 10400 | Feature: relationship         | Reward:   0.1867 | Acc: 0.7067 | DPG: 0.3824 | Loss:   0.0020
+Episode 10500 | Feature: relationship         | Reward:   0.2250 | Acc: 0.7167 | DPG: 0.3245 | Loss:   0.0026
+Episode 10600 | Feature: relationship         | Reward:   0.2683 | Acc: 0.6700 | DPG: 0.4568 | Loss:   0.0057
+Episode 10700 | Feature: relationship         | Reward:   0.1850 | Acc: 0.7233 | DPG: 0.2453 | Loss:   0.0018
+Episode 10800 | Feature: relationship         | Reward:   0.1750 | Acc: 0.6633 | DPG: 0.3509 | Loss:   0.0058
+Episode 10900 | Feature: relationship         | Reward:   0.1883 | Acc: 0.6200 | DPG: 0.2855 | Loss:   0.0033
+Episode 11000 | Feature: relationship         | Reward:   0.1833 | Acc: 0.7233 | DPG: 0.2933 | Loss:   0.0053
+Episode 11100 | Feature: relationship         | Reward:   0.1717 | Acc: 0.6700 | DPG: 0.2692 | Loss:   0.0031
+Episode 11200 | Feature: relationship         | Reward:   0.1850 | Acc: 0.6933 | DPG: 0.3419 | Loss:   0.0029
+Episode 11300 | Feature: relationship         | Reward:   0.2550 | Acc: 0.6500 | DPG: 0.3485 | Loss:   0.0102
+Episode 11400 | Feature: relationship         | Reward:   0.1950 | Acc: 0.7000 | DPG: 0.2432 | Loss:   0.0039
+Episode 11500 | Feature: relationship         | Reward:   0.2250 | Acc: 0.6633 | DPG: 0.3235 | Loss:   0.0069
+Episode 11600 | Feature: relationship         | Reward:   0.2367 | Acc: 0.7233 | DPG: 0.3444 | Loss:   0.0022
+Episode 11700 | Feature: relationship         | Reward:   0.2283 | Acc: 0.6800 | DPG: 0.3652 | Loss:   0.0022
+Episode 11800 | Feature: relationship         | Reward:   0.1950 | Acc: 0.7267 | DPG: 0.2846 | Loss:   0.0051
+Episode 11900 | Feature: relationship         | Reward:   0.1967 | Acc: 0.7167 | DPG: 0.2704 | Loss:   0.0045
+Episode 12000 | Feature: relationship         | Reward:   0.1600 | Acc: 0.7233 | DPG: 0.2029 | Loss:   0.0004
+Episode 12100 | Feature: relationship         | Reward:   0.1583 | Acc: 0.7100 | DPG: 0.2359 | Loss:  -0.0005
+Episode 12200 | Feature: relationship         | Reward:   0.1517 | Acc: 0.7467 | DPG: 0.3331 | Loss:  -0.0002
+Episode 12300 | Feature: relationship         | Reward:   0.2117 | Acc: 0.7067 | DPG: 0.3891 | Loss:   0.0038
+Episode 12400 | Feature: relationship         | Reward:   0.1533 | Acc: 0.7400 | DPG: 0.2222 | Loss:  -0.0008
+Episode 12500 | Feature: relationship         | Reward:   0.1933 | Acc: 0.7167 | DPG: 0.2313 | Loss:   0.0007
+Episode 12600 | Feature: relationship         | Reward:   0.2050 | Acc: 0.7267 | DPG: 0.3185 | Loss:   0.0010
+Episode 12700 | Feature: relationship         | Reward:   0.1733 | Acc: 0.7133 | DPG: 0.2713 | Loss:   0.0011
+Episode 12800 | Feature: relationship         | Reward:   0.1683 | Acc: 0.7767 | DPG: 0.3167 | Loss:   0.0002
+Episode 12900 | Feature: education.num        | Reward:   0.1333 | Acc: 0.7900 | DPG: 0.0201 | Loss:   0.4696
+Episode 13000 | Feature: relationship         | Reward:   0.1833 | Acc: 0.7167 | DPG: 0.2648 | Loss:   0.0034
+Episode 13100 | Feature: relationship         | Reward:   0.1850 | Acc: 0.7567 | DPG: 0.2542 | Loss:   0.0044
+Episode 13200 | Feature: relationship         | Reward:   0.1983 | Acc: 0.7233 | DPG: 0.2902 | Loss:   0.0049
+Episode 13300 | Feature: relationship         | Reward:   0.1917 | Acc: 0.7600 | DPG: 0.2619 | Loss:   0.0027
+Episode 13400 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7200 | DPG: 0.4050 | Loss:   0.0016
+Episode 13500 | Feature: relationship         | Reward:   0.1917 | Acc: 0.7133 | DPG: 0.3212 | Loss:   0.0046
+Episode 13600 | Feature: relationship         | Reward:   0.1567 | Acc: 0.6733 | DPG: 0.6229 | Loss:   0.0006
+Episode 13700 | Feature: education.num        | Reward:   0.0967 | Acc: 0.8067 | DPG: 0.0436 | Loss:   0.3112
+Episode 13800 | Feature: relationship         | Reward:   0.2367 | Acc: 0.6900 | DPG: 0.3583 | Loss:   0.0064
+Episode 13900 | Feature: relationship         | Reward:   0.1767 | Acc: 0.7433 | DPG: 0.3193 | Loss:   0.0079
+Episode 14000 | Feature: age                  | Reward:   0.0050 | Acc: 0.8767 | DPG: 0.2358 | Loss:   0.0060
+Episode 14100 | Feature: relationship         | Reward:   0.1833 | Acc: 0.6967 | DPG: 0.2842 | Loss:   0.0028
+Episode 14200 | Feature: relationship         | Reward:   0.1733 | Acc: 0.7433 | DPG: 0.2276 | Loss:   0.0035
+Episode 14300 | Feature: relationship         | Reward:   0.1733 | Acc: 0.6667 | DPG: 0.3483 | Loss:   0.0015
+Episode 14400 | Feature: relationship         | Reward:   0.1650 | Acc: 0.7500 | DPG: 0.3072 | Loss:   0.0009
+Episode 14500 | Feature: relationship         | Reward:   0.1950 | Acc: 0.6600 | DPG: 0.3191 | Loss:   0.0028
+Episode 14600 | Feature: relationship         | Reward:   0.1683 | Acc: 0.7300 | DPG: 0.3420 | Loss:   0.0029
+Episode 14700 | Feature: relationship         | Reward:   0.1850 | Acc: 0.7000 | DPG: 0.3663 | Loss:   0.0029
+Episode 14800 | Feature: relationship         | Reward:   0.1983 | Acc: 0.6800 | DPG: 0.3143 | Loss:   0.0036
+Episode 14900 | Feature: relationship         | Reward:   0.1883 | Acc: 0.6867 | DPG: 0.4282 | Loss:   0.0030
+Episode 15000 | Feature: relationship         | Reward:   0.1600 | Acc: 0.7000 | DPG: 0.2542 | Loss:  -0.0000
+Episode 15100 | Feature: relationship         | Reward:   0.1933 | Acc: 0.7000 | DPG: 0.4424 | Loss:   0.0004
+Episode 15200 | Feature: relationship         | Reward:   0.1433 | Acc: 0.7200 | DPG: 0.2603 | Loss:  -0.0013
+Episode 15300 | Feature: relationship         | Reward:   0.1383 | Acc: 0.7667 | DPG: 0.2802 | Loss:  -0.0018
+Episode 15400 | Feature: fnlwgt               | Reward:   0.0050 | Acc: 0.8400 | DPG: 0.0779 | Loss:   0.0237
+Episode 15500 | Feature: relationship         | Reward:   0.2000 | Acc: 0.6733 | DPG: 0.2501 | Loss:   0.0007
+Episode 15600 | Feature: education.num        | Reward:   0.0883 | Acc: 0.7933 | DPG: 0.1072 | Loss:   0.3287
+Episode 15700 | Feature: relationship         | Reward:   0.1650 | Acc: 0.6967 | DPG: 0.2454 | Loss:  -0.0006
+Episode 15800 | Feature: relationship         | Reward:   0.1833 | Acc: 0.6800 | DPG: 0.2326 | Loss:   0.0006
+Episode 15900 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7000 | DPG: 0.2948 | Loss:   0.0043
+Episode 16000 | Feature: relationship         | Reward:   0.1767 | Acc: 0.7300 | DPG: 0.3319 | Loss:   0.0011
+Episode 16100 | Feature: relationship         | Reward:   0.2433 | Acc: 0.7633 | DPG: 0.4019 | Loss:   0.0050
+Episode 16200 | Feature: relationship         | Reward:   0.1650 | Acc: 0.7333 | DPG: 0.2240 | Loss:   0.0011
+Episode 16300 | Feature: relationship         | Reward:   0.2017 | Acc: 0.7633 | DPG: 0.2372 | Loss:   0.0041
+Episode 16400 | Feature: relationship         | Reward:   0.1917 | Acc: 0.7100 | DPG: 0.2477 | Loss:   0.0016
+Episode 16500 | Feature: relationship         | Reward:   0.1900 | Acc: 0.7033 | DPG: 0.2920 | Loss:   0.0004
+Episode 16600 | Feature: relationship         | Reward:   0.1933 | Acc: 0.7100 | DPG: 0.2524 | Loss:  -0.0001
+Episode 16700 | Feature: education            | Reward:   0.0000 | Acc: 0.8133 | DPG: 0.2791 | Loss:  -0.0098
+Episode 16800 | Feature: relationship         | Reward:   0.1750 | Acc: 0.7200 | DPG: 0.2211 | Loss:   0.0050
+Episode 16900 | Feature: relationship         | Reward:   0.1983 | Acc: 0.6633 | DPG: 0.3077 | Loss:   0.0081
+Episode 17000 | Feature: education.num        | Reward:   0.0983 | Acc: 0.7633 | DPG: 0.1574 | Loss:   0.2735
+Episode 17100 | Feature: relationship         | Reward:   0.1717 | Acc: 0.7100 | DPG: 0.2825 | Loss:   0.0005
+Episode 17200 | Feature: relationship         | Reward:   0.1967 | Acc: 0.6567 | DPG: 0.4086 | Loss:   0.0036
+Episode 17300 | Feature: relationship         | Reward:   0.2200 | Acc: 0.7067 | DPG: 0.3412 | Loss:   0.0098
+Episode 17400 | Feature: relationship         | Reward:   0.1750 | Acc: 0.6967 | DPG: 0.2695 | Loss:   0.0013
+Episode 17500 | Feature: relationship         | Reward:   0.2000 | Acc: 0.6867 | DPG: 0.5991 | Loss:   0.0024
+Episode 17600 | Feature: relationship         | Reward:   0.1683 | Acc: 0.7167 | DPG: 0.3025 | Loss:  -0.0003
+Episode 17700 | Feature: relationship         | Reward:   0.2083 | Acc: 0.7133 | DPG: 0.2965 | Loss:   0.0010
+Episode 17800 | Feature: relationship         | Reward:   0.1817 | Acc: 0.7100 | DPG: 0.2525 | Loss:  -0.0003
+Episode 17900 | Feature: relationship         | Reward:   0.2083 | Acc: 0.7000 | DPG: 0.3202 | Loss:   0.0007
+Episode 18000 | Feature: relationship         | Reward:   0.2000 | Acc: 0.7100 | DPG: 0.3974 | Loss:   0.0001
+Episode 18100 | Feature: relationship         | Reward:   0.2000 | Acc: 0.6867 | DPG: 0.3905 | Loss:   0.0009
+Episode 18200 | Feature: relationship         | Reward:   0.1750 | Acc: 0.7167 | DPG: 0.2230 | Loss:  -0.0006
+Episode 18300 | Feature: relationship         | Reward:   0.1733 | Acc: 0.6967 | DPG: 0.3857 | Loss:   0.0001
+Episode 18400 | Feature: relationship         | Reward:   0.1783 | Acc: 0.6933 | DPG: 0.2473 | Loss:   0.0001
+Episode 18500 | Feature: relationship         | Reward:   0.2050 | Acc: 0.7200 | DPG: 0.4036 | Loss:   0.0014
+Episode 18600 | Feature: relationship         | Reward:   0.1933 | Acc: 0.7267 | DPG: 0.2778 | Loss:   0.0007
+Episode 18700 | Feature: relationship         | Reward:   0.1883 | Acc: 0.6567 | DPG: 0.3104 | Loss:   0.0008
+Episode 18800 | Feature: relationship         | Reward:   0.2017 | Acc: 0.7033 | DPG: 0.2879 | Loss:   0.0041
+Episode 18900 | Feature: relationship         | Reward:   0.1900 | Acc: 0.7033 | DPG: 0.2494 | Loss:   0.0021
+Episode 19000 | Feature: relationship         | Reward:   0.2167 | Acc: 0.6967 | DPG: 0.3931 | Loss:   0.0060
+Episode 19100 | Feature: relationship         | Reward:   0.1833 | Acc: 0.7200 | DPG: 0.3470 | Loss:   0.0021
+Episode 19200 | Feature: relationship         | Reward:   0.1600 | Acc: 0.6667 | DPG: 0.2985 | Loss:   0.0014
+Episode 19300 | Feature: relationship         | Reward:   0.1667 | Acc: 0.7400 | DPG: 0.2773 | Loss:   0.0016
+Episode 19400 | Feature: relationship         | Reward:   0.1550 | Acc: 0.6767 | DPG: 0.3077 | Loss:   0.0002
+Episode 19500 | Feature: relationship         | Reward:   0.2183 | Acc: 0.6933 | DPG: 0.2506 | Loss:   0.0019
+Episode 19600 | Feature: relationship         | Reward:   0.2283 | Acc: 0.7033 | DPG: 0.3319 | Loss:   0.0045
+Episode 19700 | Feature: relationship         | Reward:   0.1750 | Acc: 0.7467 | DPG: 0.3240 | Loss:   0.0004
+Episode 19800 | Feature: relationship         | Reward:   0.2367 | Acc: 0.6933 | DPG: 0.2991 | Loss:   0.0031
+Episode 19900 | Feature: relationship         | Reward:   0.1783 | Acc: 0.7333 | DPG: 0.5416 | Loss:  -0.0003
+Episode 20000 | Feature: relationship         | Reward:   0.1933 | Acc: 0.6667 | DPG: 0.2953 | Loss:   0.0002
+
+All Non-Zero Features (Sorted by DPG):
+Feature                  | Avg DPG  | Acc + Fairness
+------------------------------------------------------------
+1. education            | Avg DPG: 0.4736 | Utility Score: 0.6759
+2. workclass            | Avg DPG: 0.3314 | Utility Score: 0.7450
+3. relationship         | Avg DPG: 0.3211 | Utility Score: 0.6943
+4. marital.status       | Avg DPG: 0.2938 | Utility Score: 0.7638
+5. race                 | Avg DPG: 0.2771 | Utility Score: 0.7727
+6. capital.loss         | Avg DPG: 0.2262 | Utility Score: 0.8005
+7. age                  | Avg DPG: 0.2124 | Utility Score: 0.8086
+8. hours.per.week       | Avg DPG: 0.2075 | Utility Score: 0.8108
+9. sex                  | Avg DPG: 0.1878 | Utility Score: 0.8204
+10. occupation           | Avg DPG: 0.1740 | Utility Score: 0.8221
+11. education.num        | Avg DPG: 0.1103 | Utility Score: 0.8381
+12. native.country       | Avg DPG: 0.0979 | Utility Score: 0.8644
+13. fnlwgt               | Avg DPG: 0.0894 | Utility Score: 0.8695
+14. capital.gain         | Avg DPG: 0.0273 | Utility Score: 0.8986
+
+
+7h 47m 30s
+PC:
+AMD Ryzen 5 5600GT (12) @ 4.67 GHz
+MD Radeon Vega Series / Radeon Vega Mobile Series [Integrated]
+16gb ram
+arch linux
+
+RL_TRAINING_PARAMETERS = {
+    "num_episodes": 20000,
+    "learning_rate": 1e-3,
+    "lambda": 0.5,
+    "sample_size": 300,
+}
