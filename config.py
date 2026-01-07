@@ -2,7 +2,7 @@
 # This file contains all constants, parameters, and dataset selection.
 
 # Dataset selection
-DATASET_NAME = "loan_data"  # Options: "adult", "german", "loan_data"
+DATASET_NAME = "adult"  # Options: "adult", "german", "loan_data"
 
 # Deltas for Robustness Checks
 # These values define the allowed perturbations for each feature during robustness checks.
