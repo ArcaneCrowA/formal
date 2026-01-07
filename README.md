@@ -2,16 +2,38 @@
 
 Information how it works in docs
 
-## How to run
+## How to install
 
-To check smt violations 
+I recommend using [uv](https://docs.astral.sh/uv/)
 
-```
-uv run -m src.verification.comparison
+### Using uv
+
+```bash
+uv sync --locked
 ```
 
-To train an agent 
+### Using pip
 
+```bash
+pip install -r requirements.txt
 ```
-uv run -m src.rl.rl_environment
+
+## How to run 
+
+Could use cli by running 
+
+### Using uv
+
+```bash
+uv run main.py help
 ```
+
+### Using pip
+
+```bash
+pip main.py help
+```
+
+## How to change parameters and dataset
+
+They could be changed in [config](./config.py)
