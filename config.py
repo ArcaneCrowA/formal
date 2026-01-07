@@ -4,14 +4,6 @@
 # Dataset selection
 DATASET_NAME = "loan_data"  # Options: "adult", "german", "loan_data"
 
-# RL Training Parameters
-RL_TRAINING_PARAMETERS = {
-    "num_episodes": 10000,
-    "learning_rate": 1e-3,
-    "lambda": 0.5,  # Updates
-    "sample_size": 300,  # Number of samples to use for RL training
-}
-
 # Deltas for Robustness Checks
 # These values define the allowed perturbations for each feature during robustness checks.
 DELTAS = {
