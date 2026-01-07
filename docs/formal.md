@@ -123,4 +123,10 @@ Time for original model predictions: 0.0009 seconds
 
 ---
 
+## Role of Formal Methods and SMT
+
+The framework leverages formal methods and the Z3 solver to verify the fairness and robustness of the Decision Tree model. By converting the model's logic into Z3 constraints, the framework can systematically check for violations in the neighborhood of each sample. This ensures that the model's predictions are not only accurate but also fair and robust to perturbations.
+
+---
+
 This explanation provides a high-level overview of how the framework works, focusing on the general logic and formal verification aspects.
