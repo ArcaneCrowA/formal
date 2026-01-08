@@ -82,14 +82,9 @@ def evaluate_model(
     end_time = time.time()
     time_taken = end_time - start_time
 
-    # Adjust predictions for samples with violations
-    adjusted_predictions = []
-    for i, has_violation in enumerate(violations):
-        if has_violation:
-            # Treat as misclassification by flipping the prediction
-            adjusted_predictions.append(1 - predictions[i])
-        else:
-            adjusted_predictions.append(predictions[i])
+    # With Algorithm 2, predictions are already adjusted (coerced if needed)
+    # No need for additional adjustment logic
+    adjusted_predictions = predictions
 
     accuracy = accuracy_score(y_test, adjusted_predictions)
     precision = precision_score(y_test, adjusted_predictions)
@@ -130,7 +125,7 @@ def print_metrics(
 
     if violations is not None:
         violation_rate = sum(violations) / len(violations)
-        print(f"Violation Rate: {violation_rate:.4f}")
+        print(f"Coercion Rate: {violation_rate:.4f}")
 
 
 def main():

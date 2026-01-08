@@ -42,21 +42,20 @@ def tree_constraints(tree, feature_names):
 
 def fair_robust_predict(sample, tree_cons, features, sensitive_attr, deltas):
     """
-    SMT-based violation checker that integrates fairness and robustness.
+    SMT-based prediction with fairness and robustness coercion (Algorithm 2).
 
-    Searches for a counter-example (violation) in the neighborhood of the sample.
-    A violation exists if there's a point X' in the neighborhood such that
-    Tree(X') != Tree(sample).
+    Implements coercion logic to find fair predictions within perturbation bounds.
+    If no fair prediction is possible, falls back to the original prediction.
 
     Returns:
-        tuple: (original_prediction, has_violation)
-               - original_prediction: The class predicted by the tree for the sample.
-               - has_violation: Boolean, True if a counter-example was found by Z3.
+        tuple: (final_prediction, has_violation)
+               - final_prediction: The coerced prediction if possible, otherwise original
+               - has_violation: Boolean, True if coercion was applied
     """
     X_vars, path_leaf = tree_cons
 
-    # 1. Identify the original prediction for the sample
-    # Convert Python values to Z3 RealVal to satisfy is_expr(p[1]) in substitute()
+    # 1. Get Original Prediction (fallback)
+    # Convert Python values to Z3 RealVal for substitution
     sample_subst = [(X_vars[f], RealVal(float(sample[f]))) for f in features]
 
     original_pred = None
@@ -64,7 +63,6 @@ def fair_robust_predict(sample, tree_cons, features, sensitive_attr, deltas):
     for cond, leaf_val in path_leaf:
         # Check if the concrete sample satisfies this path's condition
         s.push()
-        # substitute(e, (old1, new1), (old2, new2), ...)
         s.add(substitute(cond, *sample_subst))
         if s.check() == sat:
             original_pred = leaf_val
@@ -73,46 +71,60 @@ def fair_robust_predict(sample, tree_cons, features, sensitive_attr, deltas):
         s.pop()
 
     if original_pred is None:
-        # Fallback if for some reason the tree structure is inconsistent
+        # Fallback if tree structure is inconsistent
         return 0, False
 
-    # 2. Search for a violation (Counter-example)
-    v_solver = Solver()
+    # 2. Reset & Configure Solver for Coercion Logic
+    coercion_solver = Solver()
     Xp_vars = {f: Real(f + "_p") for f in features}
 
-    # Neighborhood constraints for X'
+    # 3. Apply Constraints (The "Coercion" Logic)
+    # Fix Sensitive Attributes: Force x_prime's sensitive attribute to match x
+    coercion_solver.add(
+        Xp_vars[sensitive_attr] == float(sample[sensitive_attr])
+    )
+
+    # Set Perturbation Bounds for other features
     for f in features:
-        if f == sensitive_attr:
-            # Test for individual fairness using deltas for continuous attributes
-            if f in deltas:
-                v_solver.add(Xp_vars[f] >= float(sample[f]) - float(deltas[f]))
-                v_solver.add(Xp_vars[f] <= float(sample[f]) + float(deltas[f]))
-            else:
-                # For binary sensitive attributes, flip between 0 and 1
-                v_solver.add(Or(Xp_vars[f] == 0.0, Xp_vars[f] == 1.0))
-        elif f in deltas:
-            # Test for local robustness (perturbations within delta)
-            v_solver.add(Xp_vars[f] >= float(sample[f]) - float(deltas[f]))
-            v_solver.add(Xp_vars[f] <= float(sample[f]) + float(deltas[f]))
-        else:
+        if f != sensitive_attr and f in deltas:
+            # Constrain x_prime to be close to x (within delta)
+            coercion_solver.add(
+                Xp_vars[f] >= float(sample[f]) - float(deltas[f])
+            )
+            coercion_solver.add(
+                Xp_vars[f] <= float(sample[f]) + float(deltas[f])
+            )
+        elif f != sensitive_attr:
             # Features not being tested are held constant
-            v_solver.add(Xp_vars[f] == float(sample[f]))
+            coercion_solver.add(Xp_vars[f] == float(sample[f]))
 
     # Define the model's output for the perturbed sample X'
     pred_p = Real("pred_p")
-    v_solver.add(Or(pred_p == 0.0, pred_p == 1.0))
+    coercion_solver.add(Or(pred_p == 0.0, pred_p == 1.0))
 
-    # Map original variables in path conditions to the perturbed variables
+    # Enforce Tree Logic: Map original variables to perturbed variables
     subst_map = [(X_vars[f], Xp_vars[f]) for f in features]
     for cond, leaf_val in path_leaf:
-        # For each path, if X' satisfies the condition, then the prediction is leaf_val.
+        # For each path, if X' satisfies the condition, then the prediction is leaf_val
         perturbed_cond = substitute(cond, *subst_map)
-        v_solver.add(Implies(perturbed_cond, pred_p == float(leaf_val)))
+        coercion_solver.add(Implies(perturbed_cond, pred_p == float(leaf_val)))
 
-    # The violation condition: there exists X' such that its prediction != original prediction.
-    v_solver.add(pred_p != float(original_pred))
+    # 4. Solve for a DIFFERENT Valid Prediction (S.check())
+    # Check if a valid, fair prediction exists within bounds that is DIFFERENT from original
+    # Exclude the original prediction to only count meaningful coercion
+    coercion_solver.add(pred_p != float(original_pred))
 
-    # If the solver finds such an X', then the sample violates the constraints.
-    has_violation = v_solver.check() == sat
+    if coercion_solver.check() == sat:
+        # COERCION HAPPENS HERE
+        # The solver found a DIFFERENT valid, fair path. Use it.
+        model = coercion_solver.model()
+        final_prediction = int(model[pred_p].as_long())
+        has_violation = True  # Meaningful coercion was applied
+    else:
+        # FALLBACK
+        # No DIFFERENT fair prediction possible within bounds.
+        # Revert to original (potentially biased) prediction.
+        final_prediction = original_pred
+        has_violation = False  # No meaningful coercion applied
 
-    return original_pred, has_violation
+    return final_prediction, has_violation

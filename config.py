@@ -34,7 +34,7 @@ SENSITIVE_ATTRIBUTES = {
 
 # Model Training Parameters
 MODEL_PARAMETERS = {
-    "max_depth": 3,
+    "max_depth": 5,
     "random_state": 42,
 }
 
