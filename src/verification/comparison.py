@@ -144,6 +144,10 @@ def main():
         clf,
     ) = load_data_and_train_model(dataset_name)
 
+    print(
+        f"\n=== Formal Verification Results for {dataset_name.upper()} Dataset ==="
+    )
+
     # Get Z3 constraints
     tree_cons = tree_constraints(clf.tree_, features)
 
