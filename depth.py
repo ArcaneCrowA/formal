@@ -3,6 +3,7 @@ import time
 import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 
+from config import DATASET_NAME
 from src.utils.dataset import load_and_preprocess_dataset
 from src.verification.z3_model import fair_robust_predict, tree_constraints
 
@@ -45,7 +46,7 @@ def main():
     print("Running SMT solver at different depths...")
     for depth in depths:
         print(f"Running depth {depth}...")
-        time_taken = run_smt_solver_at_depth(depth)
+        time_taken = run_smt_solver_at_depth(depth, DATASET_NAME)
         times.append(time_taken)
         print(f"Depth {depth}: {time_taken:.4f} seconds")
 
@@ -54,17 +55,17 @@ def main():
     plt.plot(depths, times, marker="o", linewidth=2, markersize=8)
     plt.xlabel("Tree Depth", fontsize=12)
     plt.ylabel("Time (seconds)", fontsize=12)
-    plt.title("SMT Solver Performance vs Tree Depth", fontsize=14)
+    plt.title(
+        f"SMT Solver Performance vs Tree Depth for {DATASET_NAME.title()} dataset",
+        fontsize=14,
+    )
     plt.grid(True, alpha=0.3)
     plt.xticks(depths)
     plt.tight_layout()
 
     # Save the figure
-    plt.savefig("smt_depth_timing.png", dpi=300)
+    plt.savefig("adult_depth_timing.png", dpi=300)
     print("Figure saved as 'smt_depth_timing.png'")
-
-    # Show the plot
-    plt.show()
 
 
 if __name__ == "__main__":
