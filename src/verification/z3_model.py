@@ -1,4 +1,17 @@
-from z3 import And, BoolVal, Implies, Or, Real, RealVal, Solver, sat, substitute
+import time
+
+from z3 import (
+    And,
+    BoolVal,
+    Implies,
+    Or,
+    Real,
+    RealVal,
+    Solver,
+    sat,
+    substitute,
+    unsat,
+)
 
 
 def tree_constraints(tree, feature_names):
@@ -38,6 +51,74 @@ def tree_constraints(tree, feature_names):
 
     dfs(0, [])
     return X_vars, path_leaf
+
+
+def verify_global_properties(tree_cons, features, sensitive_attr, deltas):
+    """
+    Pre-deployment global verification of fairness and robustness.
+
+    Checks if there exists ANY pair of inputs (x, x') within perturbation bounds
+    that produce different predictions. This is a one-time cost before deployment.
+
+    Returns:
+        dict: {
+            "is_verified": bool,  # True if UNSAT (no violations exist globally)
+            "solving_time": float,
+            "total_time": float
+        }
+    """
+    X_vars, path_leaf = tree_cons
+
+    # Create perturbed variables x'
+    Xp_vars = {f: Real(f + "_p") for f in features}
+
+    # Define predictions for x and x'
+    pred_x = Real("pred_x")
+    pred_xp = Real("pred_xp")
+
+    solver = Solver()
+
+    # Enforce tree logic for x
+    for cond, leaf_val in path_leaf:
+        solver.add(Implies(cond, pred_x == float(leaf_val)))
+
+    # Enforce tree logic for x'
+    subst_map = [(X_vars[f], Xp_vars[f]) for f in features]
+    for cond, leaf_val in path_leaf:
+        perturbed_cond = substitute(cond, *subst_map)
+        solver.add(Implies(perturbed_cond, pred_xp == float(leaf_val)))
+
+    # Ensure predictions are binary
+    solver.add(Or(pred_x == 0.0, pred_x == 1.0))
+    solver.add(Or(pred_xp == 0.0, pred_xp == 1.0))
+
+    # Apply perturbation bounds
+    for f in features:
+        if f == sensitive_attr:
+            # Fairness: sensitive attribute must remain the same
+            solver.add(Xp_vars[f] == X_vars[f])
+        elif f in deltas:
+            # Robustness: non-sensitive features within delta
+            solver.add(Xp_vars[f] >= X_vars[f] - float(deltas[f]))
+            solver.add(Xp_vars[f] <= X_vars[f] + float(deltas[f]))
+        else:
+            # Other features held constant
+            solver.add(Xp_vars[f] == X_vars[f])
+
+    # Check for violation: exists x, x' such that pred_x != pred_xp
+    solver.add(pred_x != pred_xp)
+
+    start_time = time.time()
+    result = solver.check()
+    solving_time = time.time() - start_time
+
+    is_verified = result == unsat
+
+    return {
+        "is_verified": is_verified,
+        "solving_time": solving_time,
+        "total_time": solving_time,
+    }
 
 
 def fair_robust_predict(sample, tree_cons, features, sensitive_attr, deltas):
