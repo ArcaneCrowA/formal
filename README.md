@@ -12,12 +12,6 @@ I recommend using [uv](https://docs.astral.sh/uv/)
 uv sync --locked
 ```
 
-### Using pip
-
-```bash
-pip install -r requirements.txt
-```
-
 ## How to run 
 
 Could use cli by running 
@@ -28,11 +22,6 @@ Could use cli by running
 uv run main.py help
 ```
 
-### Using pip
-
-```bash
-pip main.py help
-```
 
 ## How to change parameters and dataset
 
