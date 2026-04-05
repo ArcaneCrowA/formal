@@ -43,3 +43,6 @@ VERIFICATION_PARAMETERS = {
     "use_z3": True,  # Whether to use Z3 for fairness/robustness checks
     "violation_threshold": 0.01,  # Threshold for considering a violation significant
 }
+
+# Depths for depth.py
+DEPTHS = [1, 2, 3]

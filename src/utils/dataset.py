@@ -64,7 +64,7 @@ def _preprocess_loan_data():
     return df, features, deltas, sensitive, target
 
 
-def load_and_preprocess_dataset(dataset_name: str):
+def load_and_preprocess_dataset(dataset_name: str, random_state: int = 42):
     """Loads and preprocesses the specified dataset."""
     if dataset_name == "adult":
         df, features, deltas, sensitive, target = _preprocess_adult()
@@ -78,7 +78,7 @@ def load_and_preprocess_dataset(dataset_name: str):
     X = df[features]
     y = df[target]
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+        X, y, test_size=0.2, random_state=random_state
     )
 
     return X_train, X_test, y_train, y_test, features, deltas, sensitive

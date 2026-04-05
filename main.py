@@ -3,7 +3,7 @@
 Entry point script to run the verification comparison module.
 
 Usage:
-    uv run main.py comparison
+    uv run main.py comp [--runs N]
     uv run main.py help
 """
 
@@ -16,8 +16,9 @@ def print_help():
     help_message = """
 Available commands:
 
-  comp
+  comp [--runs N]
     Run the comparison module to evaluate model performance and fairness.
+    --runs N: Run N times with different random seeds (default: 1).
 
   help
     Display this help message.
@@ -33,7 +34,19 @@ def main():
     command = sys.argv[1]
 
     if command == "comp":
-        comparison_main()
+        num_runs = 1
+        if "--runs" in sys.argv:
+            runs_idx = sys.argv.index("--runs")
+            if runs_idx + 1 < len(sys.argv):
+                try:
+                    num_runs = int(sys.argv[runs_idx + 1])
+                except ValueError:
+                    print("Error: --runs requires an integer argument.")
+                    sys.exit(1)
+            else:
+                print("Error: --runs requires an integer argument.")
+                sys.exit(1)
+        comparison_main(num_runs=num_runs)
     elif command == "help":
         print_help()
     else:
